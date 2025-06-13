@@ -1,0 +1,20 @@
+1. 데이터 전처리
+
+변환하고 싶은 이미지를 레이블 별로 다음 경로에 넣습니다.
+split/train/{라벨1}/
+split/train/{라벨2}/
+...
+split/test/{라벨1}/
+split/test/{라벨2}/
+...
+01processs_execute.ipynb를 열어, 하드코딩된 #5.1 dataset processing-train의 classname 변수를 레이블에 맞게변경해줘야 합니다.
+이후 모든 항을 실행시키면, 입력 이미지가 모델의 각 관절의 절대위치를 추정하는 실수값으로 변환되어 train과 test가 각각의 csv파일로 저장됩니다.
+이 과정은 MoveNet Thunder 모델을 사용하여 이루어집니다. 램 성능에 따라 변환중 정지될 수 있으며 이 경우 이미지를 나누어 여러번 실행해야 합니다.
+
+
+
+2. 데이터 학습
+test_data.csv
+train_data.csv
+위 두 파일을 posetifinalcode/ 로 옮긴 뒤, 02train.ipynb의 모든 항목을 실행합니다.
+실행 결과로 pose_classifier.tflite 모델이 생성됩니다.
