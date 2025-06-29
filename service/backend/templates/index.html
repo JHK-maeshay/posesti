@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>Pose Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+</head>
+<body>
+    <h2>Pose Classifier</h2>
+
+    <div class="tabs" id="tabs">
+        <div class="tab active" data-tab="tab1">upload</div>
+    </div>
+
+    <div id="tab1" class="tab-content active">
+    <h3>이미지 업로드 (PNG)</h3>
+    <input type="file" id="imageInput" accept=".png">
+    <div id="preview"></div>
+
+    <p id="uploadStatus"></p>
+    </div>
+    <script>
+        const input = document.getElementById('imageInput');
+        const preview = document.getElementById('preview');
+        let selectedFile = null;
+
+        input.addEventListener('change', () => {
+            const file = input.files[0];
+            if (!file) {
+                alert('파일을 선택하세요.');
+                return;
+            }
+            selectedFile = file;
+            preview.innerHTML = '';
+
+            const reader = new FileReader();
+            reader.onload = e => {
+            console.log('파일 읽기 완료:', e.target.result);
+            preview.innerHTML = `<p>미리보기:</p><img src="${e.target.result}" width="400">`;
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>

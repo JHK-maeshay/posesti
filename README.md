@@ -35,3 +35,15 @@
 위 두 파일을 posetifinalcode/ 로 옮긴 뒤, 02train.ipynb의 모든 항목을 실행합니다.
 
 실행 결과로 pose_classifier.tflite 모델이 생성됩니다.
+
+
+
+##### 3. 웹 서버 실행 및 접속
+
+루트 폴더에서 명령프롬프트 실행 후 다음 입력
+
+rootpath> `venv\Scripts\activate`
+
+(venv) rootpath> `python service/backend/main.py`
+
+서버가 실행됬으면 `service/client/client.html`을 실행해 접속
