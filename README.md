@@ -46,4 +46,4 @@ rootpath> `venv\Scripts\activate`
 
 (venv) rootpath> `python service/backend/main.py`
 
-서버가 실행됬으면 `service/client/client.html`을 실행해 접속
+서버가 실행됬으면 브라우저에서 `http://127.0.0.1:5000/`로 접속
