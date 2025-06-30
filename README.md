@@ -42,7 +42,11 @@
 
 루트 폴더에서 명령프롬프트 실행 후 다음 입력
 
+rootpath> `python -m venv venv`
+
 rootpath> `venv\Scripts\activate`
+
+(venv) rootpath> `pip install -r requirements.txt`
 
 (venv) rootpath> `python service/backend/main.py`
 

@@ -22,6 +22,7 @@
     <script>
         const input = document.getElementById('imageInput');
         const preview = document.getElementById('preview');
+        const status = document.getElementById('uploadStatus');
         let selectedFile = null;
 
         input.addEventListener('change', () => {
@@ -39,6 +40,29 @@
             preview.innerHTML = `<p>미리보기:</p><img src="${e.target.result}" width="400">`;
             };
             reader.readAsDataURL(file);
+
+            //fetch
+            const formData = new FormData();
+            formData.append('image', file);
+
+            status.innerText = '업로딩...'
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.result) {
+                    status.innerText = `예측 결과: ${data.result}`;
+                } else if (data.error) {
+                    status.innerText = `오류: ${data.error}`;
+                }
+            })
+            .catch(err => {
+                console.error('업로드 실패:', err);
+                status.innerText = '서버 오류 발생';
+            });
         });
     </script>
 </body>
